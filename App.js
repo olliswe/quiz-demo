@@ -2,6 +2,9 @@ import React, {useEffect, useContext} from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import {withNavContext} from "./state_management/navContext";
 import {NavContext} from "./state_management/navContext";
+import Submission from "./components/Submission";
+import Question from "./components/Question";
+import Poll from "./components/Poll";
 
 function App(props) {
 
@@ -11,16 +14,23 @@ function App(props) {
 
   return (
     <View style={styles.container}>
+      {navState === 'submission' &&
+          <Submission/>
+       }
+      {navState === 'question' &&
+          <Question/>
+      }
+      {navState === 'poll' &&
+           <Poll/>
+      }
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: 'rgb(212, 229, 244)',
+    flex:1,
   },
 });
 

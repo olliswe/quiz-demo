@@ -1,5 +1,4 @@
 import React, {createContext} from 'react'
-import * as SecureStore from 'expo-secure-store';
 
 
 const SubmissionContext = createContext()

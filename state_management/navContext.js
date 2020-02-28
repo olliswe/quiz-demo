@@ -1,11 +1,10 @@
 import React, {createContext} from 'react'
-import * as SecureStore from 'expo-secure-store';
 
 
 const NavContext = createContext()
 
 
-let initialState = 'enter';
+let initialState = 'submission';
 
 
 let reducer = (state, action) => {
@@ -16,7 +15,7 @@ let reducer = (state, action) => {
         case "ANSWER":
             return 'poll';
         case "START_OVER":
-            return 'enter';
+            return 'submission';
     }
 };
 
