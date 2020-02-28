@@ -6,28 +6,47 @@ import {fetchRoom} from '../../mock_backend/qasurvey-backend'
 import * as Progress from 'react-native-progress';
 
 const Submission = (props) => {
-    const [popupAnim] = useState(new Animated.Value(-150))
+    const [popupAnim, setPopupAmin] = useState(new Animated.Value(-150))
     const [input, setInput] = useState('')
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
 
 
-    const handleSubmit = () => {
+    useEffect(()=>{
+        setTimeout(()=> {
+                Animated.spring(popupAnim, {
+                    toValue: -20,
+                    duration: 200,
+                }).start();
+            },200
+        )
+    }, [popupAnim])
+
+
+
+
+    const handleSubmit = (withPop=false) => {
         setLoading(true)
+        setError(false)
+        console.log(withPop)
+        if (withPop===true){
+            setPopupAmin(new Animated.Value(-150))
+        }
         fetchRoom(input)
             .then(res=> {
-                    console.log(res)
+                    // console.log(res)
                     setLoading(false)
                 }
             )
-            .catch(error=>console.log(error))
+            .catch(error=>{
+                setError(true)
+                setLoading(false)
+            })
     }
 
-    useEffect(() => {
-        Animated.spring(popupAnim, {
-            toValue: -20,
-            duration: 100,
-        }).start();
-    }, []);
+    // useEffect(() => {
+    //     runBottomAnimation()
+    // }, []);
 
     return (
         <View style={styles.container}>
@@ -39,7 +58,7 @@ const Submission = (props) => {
                 style={styles.textInput}
                 value={input}
                 onChangeText={(text)=>{setInput(text)}}
-                onSubmitEditing={handleSubmit}
+                onSubmitEditing={()=>handleSubmit(true)}
                 />
             </View>
             {loading &&
@@ -53,7 +72,10 @@ const Submission = (props) => {
             </View>
             }
             <Animated.View style={{...styles.bottomCard, marginBottom:popupAnim}}>
-                <BottomCard />
+                <BottomCard
+                action={handleSubmit}
+                loading={loading}
+                />
             </Animated.View>
         </View>
     );
@@ -78,7 +100,8 @@ const styles = StyleSheet.create({
     },
 
     textInputWrapper:{
-        flex:4,
+        position:'absolute',
+        top:'40%',
         alignSelf: 'center',
         justifyContent: 'center',
         width:'100%',
@@ -92,7 +115,7 @@ const styles = StyleSheet.create({
         width:'80%',
         padding:10,
         alignSelf:'center',
-        paddingLeft:40
+        paddingLeft:30
     }
 })
 

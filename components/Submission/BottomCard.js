@@ -4,16 +4,26 @@ import { LinearGradient } from 'expo-linear-gradient';
 import themes from "../../themes";
 
 
-const BottomCard = () => {
+const BottomCard = (props) => {
     return (
         <View style={[styles.outerBox,themes.shadow]}>
-            <View style={[styles.innerBox,themes.shadow]}>
-                <Text
-                style={styles.text}
-                >Process Hello
-                </Text>
-            </View>
-        </View>
+            <TouchableOpacity
+                style={[styles.innerBox,themes.shadow]}
+                onPress={props.action}
+                disabled={props.loading}
+            >
+                    <Text
+                    style={styles.text}
+                    >
+                        {props.loading ?
+                            '...'
+                            :
+                            'Process'
+                        }
+                    </Text>
+            </TouchableOpacity>
+
+</View>
     );
 };
 

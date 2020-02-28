@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2192bfd-897e-4f18-901f-d0cad34da82c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/components/Submission/BottomCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mock_backend/qasurvey-backend.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/Submission/ErrorCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Submission/BottomCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Submission/BottomCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Submission/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Submission/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/state_management/navContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/state_management/navContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/state_management/submissionContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/state_management/submissionContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,12 +48,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1582888934353</updated>
-      <workItem from="1582888936037" duration="15078000" />
+      <workItem from="1582888936037" duration="17437000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="530" y="203" width="860" height="706" key="find.popup" timestamp="1582909201379">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="530" y="203" width="860" height="706" key="find.popup/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1582909201379" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
