@@ -4,16 +4,23 @@ import React, {createContext} from 'react'
 const SubmissionContext = createContext()
 
 
-let initialState = 'awaiting_submission';
+let initialState = {
+    input:'',
+    state:'awaiting_submission'
+};
 
 
 let reducer = (state, action) => {
 
     switch (action.type) {
+        case "SET_INPUT":
+            return {...state, input:action.payload.input}
         case "SUBMIT":
-            return 'loading';
+            return {...state,state:'loading'};
+        case "SUCCESS":
+            return {input:'',state:'awaiting_submission'};
         case "ERROR":
-            return 'error';
+            return {...state,state:'error'};
     }
 };
 
@@ -41,6 +48,8 @@ const withSubmissionContext =  (WrappedComponent) => {
         }
     );
 };
+
+
 
 
 

@@ -1,52 +1,21 @@
-import React, {useState, useEffect, useSate} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {View, Text, StyleSheet, Animated, TextInput} from 'react-native'
-import {withSubmissionContext} from "../../state_management/submissionContext";
+import {SubmissionContext} from "../../state_management/submissionContext";
 import BottomCard from "./BottomCard";
 import {fetchRoom} from '../../mock_backend/qasurvey-backend'
 import * as Progress from 'react-native-progress';
+import {handleSubmit} from "../../utils";
+import {NavContext} from "../../state_management/navContext";
+import {QuestionContext} from "../../state_management/questionContext";
 
 const Submission = (props) => {
-    const [popupAnim, setPopupAmin] = useState(new Animated.Value(-150))
-    const [input, setInput] = useState('')
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(false)
-
-
-    useEffect(()=>{
-        setTimeout(()=> {
-                Animated.spring(popupAnim, {
-                    toValue: -20,
-                    duration: 200,
-                }).start();
-            },200
-        )
-    }, [popupAnim])
+    let submissionContext = useContext(SubmissionContext)
+    let navContext = useContext(NavContext)
+    let questionContext = useContext(QuestionContext)
 
 
 
 
-    const handleSubmit = (withPop=false) => {
-        setLoading(true)
-        setError(false)
-        console.log(withPop)
-        if (withPop===true){
-            setPopupAmin(new Animated.Value(-150))
-        }
-        fetchRoom(input)
-            .then(res=> {
-                    // console.log(res)
-                    setLoading(false)
-                }
-            )
-            .catch(error=>{
-                setError(true)
-                setLoading(false)
-            })
-    }
-
-    // useEffect(() => {
-    //     runBottomAnimation()
-    // }, []);
 
     return (
         <View style={styles.container}>
@@ -56,12 +25,16 @@ const Submission = (props) => {
                 <TextInput
                 placeholder={'Write 4-digit room ID here'}
                 style={styles.textInput}
-                value={input}
-                onChangeText={(text)=>{setInput(text)}}
-                onSubmitEditing={()=>handleSubmit(true)}
+                value={submissionContext.state.input}
+                onChangeText={(text)=>{
+                    submissionContext.dispatch({type:'SET_INPUT',payload:{'input':text}})
+                }}
+                onSubmitEditing={()=> {
+                    handleSubmit(submissionContext, navContext, questionContext)
+                }}
                 />
             </View>
-            {loading &&
+            {submissionContext.state.state==='loading' &&
             <View style={styles.loadingBar}>
                 <Progress.Bar
                     width={300}
@@ -71,28 +44,18 @@ const Submission = (props) => {
                 />
             </View>
             }
-            <Animated.View style={{...styles.bottomCard, marginBottom:popupAnim}}>
-                <BottomCard
-                action={handleSubmit}
-                loading={loading}
-                />
-            </Animated.View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     container:{
-        flex:1,
+        flex:3,
         flexDirection:'column',
     },
-    bottomCard:{
-        flex: 1,
-        justifyContent: 'flex-end',
-    },
     loadingBar:{
-        position:'absolute',
-        top:'50%',
+        position:'relative',
+        top:'20%',
         width:'100%',
         flex:1,
         justifyContent: 'center',
@@ -100,8 +63,8 @@ const styles = StyleSheet.create({
     },
 
     textInputWrapper:{
-        position:'absolute',
-        top:'40%',
+        position:'relative',
+        top:0,
         alignSelf: 'center',
         justifyContent: 'center',
         width:'100%',
@@ -119,4 +82,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default withSubmissionContext(Submission);
+export default Submission;

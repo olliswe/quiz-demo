@@ -1,24 +1,45 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import themes from "../../themes";
+import {SubmissionContext} from "../../state_management/submissionContext";
+import {handleSubmit} from "../../utils";
+import {NavContext} from "../../state_management/navContext";
+import {QuestionContext} from "../../state_management/questionContext";
+
 
 
 const BottomCard = (props) => {
+    let submissionContext = useContext(SubmissionContext)
+    let navContext = useContext(NavContext)
+    let questionContext = useContext(QuestionContext)
+
+    const handlePress = () => {
+        if (navContext.state!=='submission'){
+            navContext.dispatch({type:"START_OVER"})
+        }else{
+            handleSubmit(submissionContext, navContext, questionContext)
+        }
+    }
+
     return (
         <View style={[styles.outerBox,themes.shadow]}>
             <TouchableOpacity
                 style={[styles.innerBox,themes.shadow]}
-                onPress={props.action}
-                disabled={props.loading}
+                onPress={handlePress}
+                disabled={submissionContext.state.state === 'loading' }
             >
                     <Text
                     style={styles.text}
                     >
-                        {props.loading ?
-                            '...'
+                        {navContext.state === 'submission' ?
+                            (submissionContext.state.state === 'loading' ?
+                                    '...'
+                                    :
+                                    'Process'
+                            )
                             :
-                            'Process'
+                            'Start Over'
                         }
                     </Text>
             </TouchableOpacity>
@@ -36,7 +57,8 @@ const styles = StyleSheet.create({
         borderTopRightRadius:44,
         backgroundColor:'purple',
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        zIndex: 100
     },
     innerBox:{
         width:"70%",
