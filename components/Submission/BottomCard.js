@@ -3,7 +3,7 @@ import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import themes from "../../themes";
 import {SubmissionContext} from "../../state_management/submissionContext";
-import {handleSubmit} from "../../utils";
+import {handleSubmit} from "../../actions";
 import {NavContext} from "../../state_management/navContext";
 import {QuestionContext} from "../../state_management/questionContext";
 

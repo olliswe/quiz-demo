@@ -1,11 +1,12 @@
 import React from 'react'
-import {fetchRoom} from "../mock_backend/qasurvey-backend";
+import {fetchRoom, fetchRandomRoom} from "../mock_backend/qasurvey-backend";
 
 export const handleSubmit = (submissionContext, navContext, questionContext) => {
     submissionContext.dispatch({type:"SUBMIT"})
-    fetchRoom(submissionContext.state.input)
+    fetchRandomRoom(submissionContext.state.input)
         .then(res=> {
                 if (!!res.question){
+                    console.log(res)
                     submissionContext.dispatch({type:"SUCCESS"});
                     navContext.dispatch({type:"SUCCESS"})
                     questionContext.dispatch({type:"SET_QUESTION", payload:{answers:res.answers, question:res.question, roomId:res.id}})

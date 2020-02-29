@@ -12,6 +12,7 @@ const Question = (props) => {
 
     const handleAnswer = (answer) => {
         navContext.dispatch({type:'ANSWER'})
+        questionContext.dispatch({type:'ANSWER_QUESTION',payload:{answer:answer}})
     }
 
     return (
@@ -33,7 +34,6 @@ const Question = (props) => {
             <TouchableOpacity
             style={styles.button}
             onPress={()=>handleAnswer('no')}
-
             >
                 <Text>No</Text>
             </TouchableOpacity>

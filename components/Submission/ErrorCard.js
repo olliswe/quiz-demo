@@ -7,7 +7,7 @@ const ErrorCard = (props) => {
 
     useEffect(()=>{
                 Animated.spring(popdownAnim, {
-                    toValue: 0,
+                    toValue: -20,
                     duration: 200,
                 }).start();
     }, [popdownAnim])
@@ -41,8 +41,8 @@ const ErrorCard = (props) => {
 const styles = StyleSheet.create({
     card:{
         backgroundColor: 'rgba(151,57,228,0.76)',
-        height:100,
-        paddingTop:40,
+        height:110,
+        paddingTop:60,
         padding:20
     },
     text:{

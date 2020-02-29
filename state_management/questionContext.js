@@ -15,12 +15,13 @@ let reducer = (state, action) => {
 
     switch (action.type) {
         case "SET_QUESTION":
-            return {answers:action.payload.answers, question:action.payload.question, roomId:action.payload.roomId}
+            return {answers:action.payload.answers, question:action.payload.question, roomId:action.payload.roomId};
         case "ANSWER_QUESTION":
             if (action.payload.answer==='yes'){
-                //increase answer YES by 1
+                return {...state, answers:{...state.answers,Yes:state.answers.Yes+1}}
             } else {
-                //increase answer NO by 1
+                return {...state, answers:{...state.answers,No:state.answers.No+1}}
+
             }
     }
 };

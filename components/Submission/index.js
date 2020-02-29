@@ -4,7 +4,7 @@ import {SubmissionContext} from "../../state_management/submissionContext";
 import BottomCard from "./BottomCard";
 import {fetchRoom} from '../../mock_backend/qasurvey-backend'
 import * as Progress from 'react-native-progress';
-import {handleSubmit} from "../../utils";
+import {handleSubmit} from "../../actions";
 import {NavContext} from "../../state_management/navContext";
 import {QuestionContext} from "../../state_management/questionContext";
 
