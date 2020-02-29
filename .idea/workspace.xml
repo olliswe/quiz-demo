@@ -3,13 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f2192bfd-897e-4f18-901f-d0cad34da82c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Poll/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Poll/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Question/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Question/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Submission/BottomCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Submission/BottomCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Submission/ErrorCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Submission/ErrorCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Submission/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Submission/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/state_management/questionContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/state_management/questionContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state_management/submissionContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/state_management/submissionContext.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +51,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1582888934353</updated>
-      <workItem from="1582888936037" duration="29744000" />
+      <workItem from="1582888936037" duration="33093000" />
     </task>
     <servers />
   </component>
@@ -60,10 +59,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="530" y="203" width="860" height="706" key="find.popup" timestamp="1582909201379">
+    <state x="530" y="203" width="1053" height="796" key="find.popup" timestamp="1582997348464">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="530" y="203" width="860" height="706" key="find.popup/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1582909201379" />
+    <state x="530" y="203" width="1053" height="796" key="find.popup/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1582997348464" />
     <state x="540" y="251" key="run.anything.popup" timestamp="1582990013643">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>

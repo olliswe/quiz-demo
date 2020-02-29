@@ -42,7 +42,7 @@ function App(props) {
             toValue: -20,
             duration: 200,
           }).start();
-        },200
+        },100
     )
   }, [popupAnim])
 
@@ -90,7 +90,7 @@ function App(props) {
 
   return (
     <View style={styles.container}>
-      {submissionContext.state.state === 'error' &&
+      {submissionContext.state.submissionState === 'error' &&
         <ErrorCard/>
       }
       <Animated.View

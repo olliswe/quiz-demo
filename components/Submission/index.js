@@ -34,7 +34,7 @@ const Submission = (props) => {
                 }}
                 />
             </View>
-            {submissionContext.state.state==='loading' &&
+            {submissionContext.state.submissionState==='loading' &&
             <View style={styles.loadingBar}>
                 <Progress.Bar
                     width={300}

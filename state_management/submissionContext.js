@@ -1,12 +1,12 @@
 import React, {createContext} from 'react'
 
 
-const SubmissionContext = createContext()
+const SubmissionContext = createContext();
 
 
 let initialState = {
     input:'',
-    state:'awaiting_submission'
+    submissionState:'awaiting_submission'
 };
 
 
@@ -16,11 +16,11 @@ let reducer = (state, action) => {
         case "SET_INPUT":
             return {...state, input:action.payload.input}
         case "SUBMIT":
-            return {...state,state:'loading'};
+            return {...state,submissionState:'loading'};
         case "SUCCESS":
-            return {input:'',state:'awaiting_submission'};
+            return {input:'',submissionState:'awaiting_submission'};
         case "ERROR":
-            return {...state,state:'error'};
+            return {...state,submissionState:'error'};
     }
 };
 

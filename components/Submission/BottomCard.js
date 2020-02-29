@@ -27,13 +27,13 @@ const BottomCard = (props) => {
             <TouchableOpacity
                 style={[styles.innerBox,themes.shadow]}
                 onPress={handlePress}
-                disabled={submissionContext.state.state === 'loading' }
+                disabled={submissionContext.state.submissionState === 'loading' }
             >
                     <Text
                     style={styles.text}
                     >
                         {navContext.state === 'submission' ?
-                            (submissionContext.state.state === 'loading' ?
+                            (submissionContext.state.submissionState === 'loading' ?
                                     '...'
                                     :
                                     'Process'

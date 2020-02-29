@@ -19,23 +19,38 @@ const Question = (props) => {
         <View
         style={[styles.card,themes.shadow]}
         >
-            <Text>
-                {questionContext.state.question}
-            </Text>
+            <View
+            style={styles.textContainer}
+            >
+                <Text
+                style={styles.questionTop}
+                >
+                    The question is:
+                </Text>
+                <Text
+                style={styles.question}
+                >
+                    {questionContext.state.question}
+                </Text>
+            </View>
             <View
             style={styles.row}
             >
             <TouchableOpacity
-            style={styles.button}
+            style={[styles.button, themes.shadow]}
             onPress={()=>handleAnswer('yes')}
             >
-                <Text>Yes</Text>
+                <Text
+                style={styles.buttonText}
+                >YES</Text>
             </TouchableOpacity>
             <TouchableOpacity
-            style={styles.button}
+            style={[styles.button, themes.shadow]}
             onPress={()=>handleAnswer('no')}
             >
-                <Text>No</Text>
+                <Text
+                style={styles.buttonText}
+                >NO</Text>
             </TouchableOpacity>
             </View>
         </View>
@@ -46,16 +61,41 @@ const styles = StyleSheet.create({
     card:{
         width:'90%',
         margin:'5%',
-        height:200,
-        backgroundColor: 'rgb(212, 229, 244)'
+        minHeight:250,
+        backgroundColor: 'rgb(212, 229, 244)',
+        borderRadius:40,
+        flexDirection:'column',
+    },
+    textContainer:{
+      flex:1
+    },
+    questionTop:{
+        color:'purple',
+        marginTop:20,
+        marginLeft:20,
+    },
+    question:{
+      marginTop:20,
+      marginLeft:20,
+      fontSize:20,
     },
     row:{
-        flexDirection:'row'
+        flexDirection:'row',
+        flex:1
     },
     button:{
         flex:1,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        padding:5,
+        backgroundColor: 'rgb(212, 229, 244)',
+        height:'50%',
+        margin:5,
+        borderRadius:10,
+    },
+    buttonText:{
+        color:'purple',
+        fontSize:20
     }
 })
 
