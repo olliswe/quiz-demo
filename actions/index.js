@@ -5,6 +5,7 @@ export const handleSubmit = (submissionContext, navContext, questionContext) => 
     submissionContext.dispatch({type:"SUBMIT"});
     fetchRandomRoom(submissionContext.state.input)
         .then(res=> {
+                console.log(res)
                 if (!!res.question){
                     console.log(res)
                     submissionContext.dispatch({type:"SUCCESS"});
@@ -16,6 +17,7 @@ export const handleSubmit = (submissionContext, navContext, questionContext) => 
             }
         )
         .catch(error=>{
+            console.log(error)
             submissionContext.dispatch({type:"ERROR"})
         })
 }

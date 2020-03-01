@@ -1,11 +1,12 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
+import {View, StyleSheet, TouchableOpacity} from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
-import themes from "../../themes";
+import themes, {purpleColor} from "../../themes";
 import {SubmissionContext} from "../../state_management/submissionContext";
 import {handleSubmit} from "../../actions";
 import {NavContext} from "../../state_management/navContext";
 import {QuestionContext} from "../../state_management/questionContext";
+import CustomText from "../Text/CustomText";
 
 
 
@@ -23,39 +24,49 @@ const BottomCard = (props) => {
     }
 
     return (
-        <View style={[styles.outerBox,themes.shadow]}>
-            <TouchableOpacity
-                style={[styles.innerBox,themes.shadow]}
-                onPress={handlePress}
-                disabled={submissionContext.state.submissionState === 'loading' }
+        <View
+        style={[styles.wrapper,themes.shadow]}
+        >
+            <LinearGradient
+                colors={['rgb(157,57,228)','rgb(196,127,253)']}
+                start={[1,0.5]}
+                end={[0,0.5]}
+                style={[styles.outerBox]}
             >
-                    <Text
-                    style={styles.text}
-                    >
-                        {navContext.state === 'submission' ?
-                            (submissionContext.state.submissionState === 'loading' ?
-                                    '...'
-                                    :
-                                    'Process'
-                            )
-                            :
-                            'Start Over'
-                        }
-                    </Text>
-            </TouchableOpacity>
-
-</View>
+                <TouchableOpacity
+                    style={[styles.innerBox,themes.shadow]}
+                    onPress={handlePress}
+                    disabled={submissionContext.state.submissionState === 'loading' }
+                >
+                        <CustomText
+                        style={styles.text}
+                        >
+                            {navContext.state === 'submission' ?
+                                (submissionContext.state.submissionState === 'loading' ?
+                                        '...'
+                                        :
+                                        'Process'
+                                )
+                                :
+                                'Start Over'
+                            }
+                        </CustomText>
+                </TouchableOpacity>
+            </LinearGradient>
+        </View>
     );
 };
 
 
 const styles = StyleSheet.create({
+    wrapper:{
+        borderTopLeftRadius:44,
+        borderTopRightRadius:44,
+        overflow:'hidden'
+    },
     outerBox:{
         height:150,
         width:"100%",
-        borderTopLeftRadius:44,
-        borderTopRightRadius:44,
-        backgroundColor:'purple',
         justifyContent:'center',
         alignItems:'center',
         zIndex: 100
@@ -64,13 +75,14 @@ const styles = StyleSheet.create({
         width:"70%",
         height:50,
         justifyContent: 'center',
-        backgroundColor: 'purple',
+        backgroundColor: purpleColor,
         borderRadius:50,
     },
     text:{
         width:'100%',
         textAlign:'center',
-        color:'white'
+        color:'white',
+        fontSize:20
     }
 })
 

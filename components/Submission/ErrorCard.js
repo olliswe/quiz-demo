@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {View, Animated, StyleSheet, Text} from 'react-native'
+import {View, Animated, StyleSheet} from 'react-native'
+import CustomText from "../Text/CustomText";
 
 const ErrorCard = (props) => {
 
@@ -23,16 +24,16 @@ const ErrorCard = (props) => {
             <View
             style={styles.card}
             >
-                <Text
+                <CustomText
                 style={styles.text}
                 >
                     Can't process the link!
-                </Text>
-                <Text
+                </CustomText>
+                <CustomText
                     style={styles.text}
                 >
                     Check for typos or try to use another one
-                </Text>
+                </CustomText>
             </View>
         </Animated.View>
     );
@@ -46,7 +47,8 @@ const styles = StyleSheet.create({
         padding:20
     },
     text:{
-        color:'white'
+        color:'white',
+        fontSize:16
     }
 })
 

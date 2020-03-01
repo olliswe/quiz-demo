@@ -1,7 +1,8 @@
 import React, {useContext} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
+import {View, StyleSheet, TouchableOpacity} from 'react-native'
 import {QuestionContext} from "../../state_management/questionContext";
-import themes from "../../themes";
+import CustomText from "../Text/CustomText";
+import themes, {purpleColor} from "../../themes";
 import {NavContext} from "../../state_management/navContext";
 
 
@@ -22,16 +23,16 @@ const Question = (props) => {
             <View
             style={styles.textContainer}
             >
-                <Text
+                <CustomText
                 style={styles.questionTop}
                 >
                     The question is:
-                </Text>
-                <Text
+                </CustomText>
+                <CustomText
                 style={styles.question}
                 >
                     {questionContext.state.question}
-                </Text>
+                </CustomText>
             </View>
             <View
             style={styles.row}
@@ -40,17 +41,17 @@ const Question = (props) => {
             style={[styles.button, themes.shadow]}
             onPress={()=>handleAnswer('yes')}
             >
-                <Text
-                style={styles.buttonText}
-                >YES</Text>
+                <CustomText
+                style={styles.buttonCustomText}
+                >YES</CustomText>
             </TouchableOpacity>
             <TouchableOpacity
             style={[styles.button, themes.shadow]}
             onPress={()=>handleAnswer('no')}
             >
-                <Text
-                style={styles.buttonText}
-                >NO</Text>
+                <CustomText
+                style={styles.buttonCustomText}
+                >NO</CustomText>
             </TouchableOpacity>
             </View>
         </View>
@@ -70,14 +71,15 @@ const styles = StyleSheet.create({
       flex:1
     },
     questionTop:{
-        color:'purple',
-        marginTop:20,
+        color:purpleColor,
+        marginTop:40,
         marginLeft:20,
+        fontSize:16
     },
     question:{
       marginTop:20,
       marginLeft:20,
-      fontSize:20,
+      fontSize:22,
     },
     row:{
         flexDirection:'row',
@@ -93,8 +95,8 @@ const styles = StyleSheet.create({
         margin:5,
         borderRadius:10,
     },
-    buttonText:{
-        color:'purple',
+    buttonCustomText:{
+        color:purpleColor,
         fontSize:20
     }
 })

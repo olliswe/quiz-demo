@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useState} from 'react';
+import React, {useEffect, Fragment,useContext, useState} from 'react';
 import {StyleSheet, Text, View, TextInput, Animated, Keyboard} from 'react-native';
 import {withNavContext} from "./state_management/navContext";
 import {NavContext} from "./state_management/navContext";
@@ -11,9 +11,14 @@ import {SubmissionContext, withSubmissionContext} from "./state_management/submi
 import {fetchRoom} from "./mock_backend/qasurvey-backend";
 import ErrorCard from "./components/Submission/ErrorCard";
 import {withQuestionContext} from "./state_management/questionContext";
+import * as Font from 'expo-font';
+import {LinearGradient} from "expo-linear-gradient";
 
 function App(props) {
   const [popupAnim, setPopupAnim] = useState(new Animated.Value(-150));
+  const [fontLoaded, setFontLoaded] = useState(false)
+
+
 
 
   const [submissionAnim, setSubmissionAnim] = useState(new Animated.Value(250));
@@ -27,7 +32,14 @@ function App(props) {
   let submissionContext = useContext(SubmissionContext)
 
   useEffect (()=>{
-    Keyboard.addListener('keyboardDidShow', ()=>{
+
+      Font.loadAsync({
+          'helvetica-neue': require('./assets/fonts/HelveticaNeueLt.ttf'),
+      }).then(res=>setFontLoaded(true));
+
+
+
+      Keyboard.addListener('keyboardDidShow', ()=>{
       setShowBottomCard(false)
     })
     Keyboard.addListener('keyboardDidHide', ()=>{
@@ -89,37 +101,45 @@ function App(props) {
 
 
   return (
-    <View style={styles.container}>
-      {submissionContext.state.submissionState === 'error' &&
-        <ErrorCard/>
-      }
-      <Animated.View
-          style={[styles.card,{top:submissionAnim}]}
-      >
-          <Submission/>
-      </Animated.View>
-      <Animated.View
-          style={[styles.card,{top:questionAnim}]}
-      >
-          <Question/>
-      </Animated.View>
-      <Animated.View
-          style={[styles.card,{top:pollAnim}]}
-      >
-          <Poll/>
-      </Animated.View>
-      <View
-      style={styles.placeholder}
-      >
-        {showBottomCard &&
-        <Animated.View style={{...styles.bottomCard, marginBottom: popupAnim}}
-        >
-          <BottomCard
-          />
-        </Animated.View>
+    <LinearGradient
+        colors={['rgb(212,229,244)','rgb(239,245,250)']}
+        start={[0.5,1]}
+        end={[0.5,0]}
+        style={styles.container}>
+        {fontLoaded &&
+        <Fragment>
+            {submissionContext.state.submissionState === 'error' &&
+            <ErrorCard/>
+            }
+            <Animated.View
+                style={[styles.card, {top: submissionAnim}]}
+            >
+                <Submission/>
+            </Animated.View>
+            <Animated.View
+                style={[styles.card, {top: questionAnim}]}
+            >
+                <Question/>
+            </Animated.View>
+            <Animated.View
+                style={[styles.card, {top: pollAnim}]}
+            >
+                <Poll/>
+            </Animated.View>
+            <View
+                style={styles.placeholder}
+            >
+                {showBottomCard &&
+                <Animated.View style={{...styles.bottomCard, marginBottom: popupAnim}}
+                >
+                    <BottomCard
+                    />
+                </Animated.View>
+                }
+            </View>
+        </Fragment>
         }
-      </View>
-    </View>
+    </LinearGradient>
 
   );
 }

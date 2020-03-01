@@ -7,6 +7,8 @@ import * as Progress from 'react-native-progress';
 import {handleSubmit} from "../../actions";
 import {NavContext} from "../../state_management/navContext";
 import {QuestionContext} from "../../state_management/questionContext";
+import {purpleColor} from "../../themes";
+import InsetShadow from "react-native-inset-shadow";
 
 const Submission = (props) => {
     let submissionContext = useContext(SubmissionContext)
@@ -22,17 +24,21 @@ const Submission = (props) => {
             <View
             style={styles.textInputWrapper}
             >
-                <TextInput
-                placeholder={'Write 4-digit room ID here'}
-                style={styles.textInput}
-                value={submissionContext.state.input}
-                onChangeText={(text)=>{
-                    submissionContext.dispatch({type:'SET_INPUT',payload:{'input':text}})
-                }}
-                onSubmitEditing={()=> {
-                    handleSubmit(submissionContext, navContext, questionContext)
-                }}
-                />
+                <InsetShadow
+                >
+                    <TextInput
+                        placeholder={'Write 4-digit room ID here'}
+                        style={styles.textInput}
+                        value={submissionContext.state.input}
+                        onChangeText={(text)=>{
+                            submissionContext.dispatch({type:'SET_INPUT',payload:{'input':text}})
+                        }}
+                        onSubmitEditing={()=> {
+                            handleSubmit(submissionContext, navContext, questionContext)
+                        }}
+                        placeholderTextColor= {'rgba(49,69,106,0.6)'}
+                    />
+                </InsetShadow>
             </View>
             {submissionContext.state.submissionState==='loading' &&
             <View style={styles.loadingBar}>
@@ -40,7 +46,7 @@ const Submission = (props) => {
                     width={300}
                     height={10}
                     indeterminate={true}
-                    color='purple'
+                    color={purpleColor}
                 />
             </View>
             }
@@ -67,18 +73,18 @@ const styles = StyleSheet.create({
         top:0,
         alignSelf: 'center',
         justifyContent: 'center',
-        width:'100%',
+        width:'80%',
+        borderRadius:10,
+        overflow:'hidden',
+        height:60
     },
 
     textInput:{
-        borderColor:'purple',
-        borderWidth:1,
-        borderRadius:50,
         height:60,
-        width:'80%',
+        width:'100%',
         padding:10,
         alignSelf:'center',
-        paddingLeft:30
+        paddingLeft:30,
     }
 })
 
