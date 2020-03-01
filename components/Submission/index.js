@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {View, Text, StyleSheet, Animated, TextInput} from 'react-native'
 import {SubmissionContext} from "../../state_management/submissionContext";
-import BottomCard from "./BottomCard";
+import Index from "../BottomCard";
 import {fetchRoom} from '../../mock_backend/qasurvey-backend'
 import * as Progress from 'react-native-progress';
 import {handleSubmit} from "../../actions";
