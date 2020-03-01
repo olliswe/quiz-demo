@@ -17,6 +17,8 @@ import { Dimensions } from 'react-native';
 
 function App(props) {
 
+  console.disableYellowBox = true
+
   const [popupAnim, setPopupAnim] = useState(new Animated.Value(-150));
   const [fontLoaded, setFontLoaded] = useState(false)
   const [submissionAnim, setSubmissionAnim] = useState(new Animated.Value(screenHeight*0.35));
@@ -69,11 +71,11 @@ function App(props) {
       Animated.parallel([
       Animated.spring(questionAnim, {
             toValue: screenHeight*0.2,
-            duration: 1000,
+            duration: 3000,
           }),
       Animated.spring(submissionAnim, {
           toValue: screenHeight*1.5,
-          duration: 1000,
+          duration: 3000,
         }),
 
           ]).start()
@@ -83,11 +85,11 @@ function App(props) {
           Animated.parallel([
             Animated.spring(questionAnim, {
               toValue: screenHeight*1.5,
-              duration: 1000,
+              duration: 2000,
             }),
             Animated.spring(pollAnim, {
               toValue: screenHeight*0.2,
-              duration: 1000,
+              duration: 2000,
             }),
 
           ]).start()

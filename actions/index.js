@@ -3,7 +3,7 @@ import {fetchRoom, fetchRandomRoom} from "../mock_backend/qasurvey-backend";
 
 export const handleSubmit = (submissionContext, navContext, questionContext) => {
     submissionContext.dispatch({type:"SUBMIT"});
-    fetchRandomRoom(submissionContext.state.input)
+    fetchRoom(submissionContext.state.input)
         .then(res=> {
                 console.log(res)
                 if (!!res.question){
