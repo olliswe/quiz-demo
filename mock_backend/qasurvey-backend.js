@@ -41,6 +41,7 @@ module.exports = {
       console.log(roomId, room, answer, answers)
       reject(new Error('BadRequest'))
     } else {
+      console.log(roomId,room)
       room.answers[answer]++
       resolve(room)
     }

@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f2192bfd-897e-4f18-901f-d0cad34da82c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Submission/BottomCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/BottomCard/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Submission/ErrorCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ErrorCard/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Submission/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Submission/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Question/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Question/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock_backend/qasurvey-backend.js" beforeDir="false" afterPath="$PROJECT_DIR$/mock_backend/qasurvey-backend.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state_management/questionContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/state_management/questionContext.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +69,7 @@
       <workItem from="1582888936037" duration="36415000" />
       <workItem from="1583062964056" duration="7669000" />
       <workItem from="1583073678665" duration="3415000" />
+      <workItem from="1583085336311" duration="647000" />
     </task>
     <servers />
   </component>
@@ -85,6 +85,10 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="540" y="251" key="run.anything.popup/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1582990013643" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1583085505886">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1583085505886" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

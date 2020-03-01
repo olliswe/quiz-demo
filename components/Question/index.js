@@ -13,7 +13,7 @@ const Question = (props) => {
 
     const handleAnswer = (answer) => {
         navContext.dispatch({type:'ANSWER'})
-        questionContext.dispatch({type:'ANSWER_QUESTION',payload:{answer:answer}})
+        questionContext.dispatch({type:'ANSWER_QUESTION',payload:{answer:answer, roomId:questionContext.state.roomId}})
     }
 
     return (
@@ -39,7 +39,7 @@ const Question = (props) => {
             >
             <TouchableOpacity
             style={[styles.button, themes.shadow]}
-            onPress={()=>handleAnswer('yes')}
+            onPress={()=>handleAnswer('Yes')}
             >
                 <CustomText
                 style={styles.buttonCustomText}
@@ -47,7 +47,7 @@ const Question = (props) => {
             </TouchableOpacity>
             <TouchableOpacity
             style={[styles.button, themes.shadow]}
-            onPress={()=>handleAnswer('no')}
+            onPress={()=>handleAnswer('No')}
             >
                 <CustomText
                 style={styles.buttonCustomText}
