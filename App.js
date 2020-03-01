@@ -6,26 +6,26 @@ import Submission from "./components/Submission";
 import Question from "./components/Question";
 import Poll from "./components/Poll";
 import BottomCard from "./components/Submission/BottomCard";
-import {compose} from 'redux'
 import {SubmissionContext, withSubmissionContext} from "./state_management/submissionContext";
 import {fetchRoom} from "./mock_backend/qasurvey-backend";
 import ErrorCard from "./components/Submission/ErrorCard";
 import {withQuestionContext} from "./state_management/questionContext";
 import * as Font from 'expo-font';
 import {LinearGradient} from "expo-linear-gradient";
+import { Dimensions } from 'react-native';
+
 
 function App(props) {
+
   const [popupAnim, setPopupAnim] = useState(new Animated.Value(-150));
   const [fontLoaded, setFontLoaded] = useState(false)
-
-
-
-
-  const [submissionAnim, setSubmissionAnim] = useState(new Animated.Value(250));
-  const [questionAnim, setQuestionAnim] = useState(new Animated.Value(-500));
-  const [pollAnim, setPollAnim] = useState(new Animated.Value(-500));
-
+  const [submissionAnim, setSubmissionAnim] = useState(new Animated.Value(screenHeight*0.35));
+  const [questionAnim, setQuestionAnim] = useState(new Animated.Value(-screenHeight*0.5));
+  const [pollAnim, setPollAnim] = useState(new Animated.Value(-screenHeight*0.5));
   const [showBottomCard, setShowBottomCard] = useState(true)
+
+  const screenHeight = Math.round(Dimensions.get('window').height);
+
 
 
   let navContext = useContext(NavContext)
@@ -61,18 +61,18 @@ function App(props) {
   useEffect(() => {
 
     if (navContext.state === 'submission'){
-      setSubmissionAnim(new Animated.Value(250));
-      setQuestionAnim(new Animated.Value(-500));
-      setPollAnim(new Animated.Value(-500))
+      setSubmissionAnim(new Animated.Value(screenHeight*0.35));
+      setQuestionAnim(new Animated.Value(-screenHeight*0.5));
+      setPollAnim(new Animated.Value(-screenHeight*0.5))
 
     } else if (navContext.state === 'question'){
       Animated.parallel([
       Animated.spring(questionAnim, {
-            toValue: 150,
+            toValue: screenHeight*0.2,
             duration: 1000,
           }),
       Animated.spring(submissionAnim, {
-          toValue: 1000,
+          toValue: screenHeight*1.5,
           duration: 1000,
         }),
 
@@ -82,11 +82,11 @@ function App(props) {
     } else if (navContext.state === 'poll'){
           Animated.parallel([
             Animated.spring(questionAnim, {
-              toValue: 1000,
+              toValue: screenHeight*1.5,
               duration: 1000,
             }),
             Animated.spring(pollAnim, {
-              toValue: 150,
+              toValue: screenHeight*0.2,
               duration: 1000,
             }),
 
