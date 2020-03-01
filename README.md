@@ -1,6 +1,6 @@
 # Quiz Demo for Jolocom Task
 
-This repo is my submission for the task provided by Jolocom. It is a React Native App  build using Expo.
+This repo is my submission for the task provided by Jolocom. It is a React Native App  built using Expo.
 
 ## Run locally
 
